@@ -10,7 +10,7 @@
 <meta property="og:description" content="17 July 2027 · Tap to open your invitation">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://warehousewardrobe-lab.github.io/gabrielle-and-ryan/">
-<meta property="og:image" content="https://warehousewardrobe-lab.github.io/gabrielle-and-ryan/preview.jpg">
+<meta property="og:image" content="https://warehousewardrobe-lab.github.io/gabrielle-and-ryan//preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -41,13 +41,13 @@ body{margin:0;background:var(--table) var(--grain);color:var(--ink);font-family:
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
 
 /* ---------- Envelope ---------- */
-.stage{min-height:100vh;min-height:100svh;display:grid;place-items:center;padding-block:24px;perspective:1400px}
-.stage-inner{display:grid;gap:18px;justify-items:center;text-align:center}
+.stage{min-height:92svh;display:grid;place-items:center;padding-block:48px;perspective:1400px}
+.stage-inner{display:grid;gap:30px;justify-items:center;text-align:center}
 .request{font-family:var(--script);font-size:clamp(26px,6.4vw,38px);line-height:1.2;color:#4a4232;margin:0;transition:opacity .6s}
 .hint{font-family:var(--label);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:0;transition:opacity .4s}
 .opened .hint,.opened .request{opacity:0}
 
-.envelope{position:relative;width:min(86vw,440px,calc((100vh - 190px) * .707));width:min(86vw,440px,calc((100svh - 190px) * .707));
+.envelope{position:relative;width:min(80vw,380px);aspect-ratio:1414/2000;border:0;padding:0;background:none;cursor:pointer;
   filter:drop-shadow(0 22px 30px rgb(74 60 34 / .2)) drop-shadow(0 2px 3px rgb(74 60 34 / .12));
   transition:transform .9s cubic-bezier(.6,0,.2,1) 1.6s}
 .envelope:focus-visible{outline:1px solid var(--gold);outline-offset:10px;border-radius:4px}
