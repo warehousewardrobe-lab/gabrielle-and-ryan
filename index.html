@@ -9,7 +9,11 @@
 <meta property="og:title" content="Gabrielle &amp; Ryan · Save the Date">
 <meta property="og:description" content="17 July 2027 · Tap to open your invitation">
 <meta property="og:type" content="website">
-<meta property="og:image" content="invite-v2.jpg">
+<meta property="og:url" content="https://warehousewardrobe-lab.github.io/gabrielle-and-ryan/">
+<meta property="og:image" content="https://warehousewardrobe-lab.github.io/gabrielle-and-ryan/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ebe3d2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400&display=swap">
@@ -37,13 +41,13 @@ body{margin:0;background:var(--table) var(--grain);color:var(--ink);font-family:
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
 
 /* ---------- Envelope ---------- */
-.stage{min-height:92svh;display:grid;place-items:center;padding-block:48px;perspective:1400px}
-.stage-inner{display:grid;gap:30px;justify-items:center;text-align:center}
+.stage{min-height:100vh;min-height:100svh;display:grid;place-items:center;padding-block:24px;perspective:1400px}
+.stage-inner{display:grid;gap:18px;justify-items:center;text-align:center}
 .request{font-family:var(--script);font-size:clamp(26px,6.4vw,38px);line-height:1.2;color:#4a4232;margin:0;transition:opacity .6s}
 .hint{font-family:var(--label);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:0;transition:opacity .4s}
 .opened .hint,.opened .request{opacity:0}
 
-.envelope{position:relative;width:min(80vw,380px);aspect-ratio:1414/2000;border:0;padding:0;background:none;cursor:pointer;
+.envelope{position:relative;width:min(86vw,440px,calc((100vh - 190px) * .707));width:min(86vw,440px,calc((100svh - 190px) * .707));
   filter:drop-shadow(0 22px 30px rgb(74 60 34 / .2)) drop-shadow(0 2px 3px rgb(74 60 34 / .12));
   transition:transform .9s cubic-bezier(.6,0,.2,1) 1.6s}
 .envelope:focus-visible{outline:1px solid var(--gold);outline-offset:10px;border-radius:4px}
@@ -215,8 +219,8 @@ figcaption{font-family:var(--script);font-size:24px;text-align:center;color:#5b5
         <div class="strip">
           <img src="strip.jpg" width="440" height="959" alt="">
           <div class="shot"><div class="img"><img src="photo1.jpg" alt=""></div></div>
+          <div class="shot"><div class="img"><img src="photo6.jpg" alt=""></div></div>
           <div class="shot"><div class="img"><img src="photo2.jpg" alt=""></div></div>
-          <div class="shot"><div class="img"><img src="photo3.jpg" alt=""></div></div>
         </div>
       </div>
     </div>
@@ -246,7 +250,7 @@ figcaption{font-family:var(--script);font-size:24px;text-align:center;color:#5b5
 
   <figure class="closing">
     <div class="closing-photo"><div class="img"><img src="photo4.jpg" alt="Gabrielle and Ryan"></div></div>    
-    <figcaption>Gabrielle &amp; Ryan to be wed 17.07.2027</figcaption>
+    <figcaption>Gabrielle &amp; Ryan to be wed <br>17.07.2027</figcaption>
   </figure>
 </main>
 
