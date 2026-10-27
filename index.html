@@ -219,7 +219,7 @@ figcaption{font-family:var(--script);font-size:24px;text-align:center;color:#5b5
         <div class="strip">
           <img src="strip.jpg" width="440" height="959" alt="">
           <div class="shot"><div class="img"><img src="photo1.jpg" alt=""></div></div>
-          <div class="shot"><div class="img"><img src="photo6.jpg" alt=""></div></div>
+          <div class="shot"><div class="img"><img src="photobank/IMG_5614.JPG" alt=""></div></div>
           <div class="shot"><div class="img"><img src="photo2.jpg" alt=""></div></div>
         </div>
       </div>
@@ -339,6 +339,26 @@ addEventListener("resize", reveal);
 reveal();
 
 /* ---------- Photo booth ---------- */
+const boothWrap = $("boothWrap");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function armBooth(){ boothWrap.classList.remove("printing"); boothWrap.classList.add("armed"); }
+function printBooth(){
+  void boothWrap.offsetWidth;
+  requestAnimationFrame(() => { boothWrap.classList.remove("armed"); boothWrap.classList.add("printing"); });
+}
+// The strip rests fully printed; it only retracts into the booth if the booth starts off-screen.
+if (!reduceMotion && $("booth").getBoundingClientRect().top > innerHeight * .6){
+  armBooth();
+  const io = new IntersectionObserver(es => {
+    if (es[0].isIntersecting){ io.disconnect(); printBooth(); }
+  }, {threshold:.55});
+  io.observe($("booth"));
+}
+$("reprint").addEventListener("click", () => {
+  if (reduceMotion) return;
+  armBooth(); printBooth();
+});
+
 /* ---------- Photo bank: each print shows a fresh set of three ---------- */
 (function(){
   const FOLDER = "photobank";
