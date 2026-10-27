@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gabrielle &amp; Ryan · Save the Date</title>
+<meta name="description" content="Save the date for the wedding of Gabrielle Younes and Ryan Boustany, 17 July 2027.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Gabrielle &amp; Ryan · Save the Date">
+<meta property="og:description" content="17 July 2027 · Tap to open your invitation">
+<meta property="og:type" content="website">
+<meta property="og:image" content="invite-v2.jpg">
+<meta name="theme-color" content="#ebe3d2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400&display=swap">
+<style>
+/* Layout: the couple's ivory envelope, sealed in blush wax, opens onto one long stationery suite — embroidered floral frame, arched photo mats, then the countdown card. One committed look (heirloom stationery), so single theme. */
+:root{
+  --table:#ebe3d2;        /* linen tablecloth */
+  --paper:#faf6ec;        /* ivory card stock */
+  --ink:#2c4430;          /* deep garden green */
+  --sage:#6f8a5f;
+  --gold:#b8975a;
+  --gold-soft:#d9c08a;
+  --blush:#e7b7b0;
+  --muted:#7d7563;
+  --display:"Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --script:"Pinyon Script", "Snell Roundhand", "Apple Chancery", cursive;
+  --label:"Jost", "Futura", "Avenir Next", system-ui, sans-serif;
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .42 0 0 0 0 .36 0 0 0 0 .25 0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--table) var(--grain);color:var(--ink);font-family:var(--display);font-size:18px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+
+/* ---------- Envelope ---------- */
+.stage{min-height:92svh;display:grid;place-items:center;padding-block:48px;perspective:1400px}
+.stage-inner{display:grid;gap:30px;justify-items:center;text-align:center}
+.request{font-family:var(--script);font-size:clamp(26px,6.4vw,38px);line-height:1.2;color:#4a4232;margin:0;transition:opacity .6s}
+.hint{font-family:var(--label);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:0;transition:opacity .4s}
+.opened .hint,.opened .request{opacity:0}
+
+.envelope{position:relative;width:min(80vw,380px);aspect-ratio:1414/2000;border:0;padding:0;background:none;cursor:pointer;
+  filter:drop-shadow(0 22px 30px rgb(74 60 34 / .2)) drop-shadow(0 2px 3px rgb(74 60 34 / .12));
+  transition:transform .9s cubic-bezier(.6,0,.2,1) 1.6s}
+.envelope:focus-visible{outline:1px solid var(--gold);outline-offset:10px;border-radius:4px}
+.env-back{position:absolute;inset:0;border-radius:2px;background:#e6dac3}
+.card{position:absolute;left:7%;right:7%;top:2.4%;aspect-ratio:1200/1880;z-index:1;box-shadow:0 2px 6px rgb(74 60 34 / .18);
+  transition:transform 1.1s cubic-bezier(.3,.1,.2,1) 1.1s}
+.card img{display:block;width:100%;height:100%;object-fit:cover}
+.env-front{position:absolute;inset:0;z-index:2;background:url("pocket.webp") 0 0/100% 100%}
+.flap{position:absolute;inset:0;z-index:3;transform-origin:top;filter:drop-shadow(0 2px 2px rgb(90 70 40 / .22));
+  transition:transform .7s cubic-bezier(.5,0,.3,1), z-index 0s .35s}
+.flap-face,.flap-inside{position:absolute;inset:0}
+.flap-face{background:url("flap.webp") 0 0/100% 100%;transition:opacity 0s .35s}
+.flap-inside{background:url("flap-inside.webp") 0 0/100% 100%;opacity:0;transition:opacity 0s .35s}
+.seal{position:absolute;left:50%;top:53.6%;z-index:4;width:30%;transform:translate(-50%,-50%);
+  filter:drop-shadow(0 3px 4px rgb(90 65 30 / .3));transition:transform .45s ease, opacity .35s ease}
+.seal img{display:block;width:100%;height:auto}
+.envelope:hover .seal{transform:translate(-50%,-50%) scale(1.04)}
+
+.opened .seal{transform:translate(-50%,-50%) scale(.6) rotate(-18deg);opacity:0}
+.opened .flap{transform:rotateX(180deg);z-index:0}
+.opened .flap-face{opacity:0}
+.opened .flap-inside{opacity:1}
+.opened .card{transform:translateY(-36%)}
+.opened .envelope{transform:translateY(8vh) scale(.9)}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---------- Invitation ---------- */
+main{max-width:560px;margin:0 auto;padding-bottom:96px;display:grid;gap:56px}
+
+.invite{position:relative;width:100%;aspect-ratio:600/940;container-type:inline-size;
+  background:var(--paper) var(--grain);box-shadow:0 1px 0 rgb(0 0 0 / .04),0 24px 48px rgb(74 60 34 / .14)}
+.invite img{display:block;width:100%;height:100%;object-fit:cover}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.invite-text{position:absolute;left:22%;right:22%;top:24%;bottom:22%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2.4cqi}
+.script{font-family:var(--script);font-size:8cqi;line-height:1;color:#5b5240;margin:0}
+h1{font-family:var(--display);font-weight:500;font-size:12.5cqi;line-height:.98;margin:0;color:var(--ink);text-wrap:balance}
+h1 .amp{display:block;font-weight:400;font-style:italic;font-size:.62em;color:var(--gold);margin:.12em 0}
+.caps{font-family:var(--label);font-weight:400;font-size:2.6cqi;letter-spacing:.32em;text-transform:uppercase;color:#5f5a4b;margin:0}
+.caps.small{font-size:2.3cqi;color:var(--muted)}
+.mini-rule{width:9cqi;height:1px;background:var(--gold)}
+
+.flourish{display:block;width:180px;height:28px;margin:0 auto}
+
+/* Photo reveal: arched mats, visible at rest; scrolling opens the window and settles the zoom */
+.photos{display:grid;gap:22px}
+.mat{margin:0;background:var(--paper) var(--grain);padding:12px;box-shadow:inset 0 0 0 1px var(--gold-soft),0 14px 28px rgb(74 60 34 / .1);display:grid;gap:10px}
+.win{--p:0;position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;border-radius:999px 999px 2px 2px;
+  clip-path:inset(calc((1 - var(--p)) * 7%) calc((1 - var(--p)) * 11%) round 999px 999px 2px 2px)}
+.mat.wide .win{aspect-ratio:3/2;border-radius:2px;clip-path:inset(calc((1 - var(--p)) * 7%) calc((1 - var(--p)) * 9%) round 2px)}
+.win .img{position:absolute;inset:0;transform:scale(calc(1.16 - var(--p) * .16));display:grid;place-items:center;
+  font-family:var(--label);color:rgb(255 255 255 / .9);font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+.win .img img{width:100%;height:100%;object-fit:cover}
+.ph1{background:linear-gradient(160deg,#a9b59a,#56684d)}
+.ph2{background:linear-gradient(200deg,#e6cbc2,#a98479)}
+.ph3{background:linear-gradient(170deg,#d8ccb2,#8d7c5c)}
+figcaption{font-family:var(--script);font-size:24px;text-align:center;color:#5b5240;line-height:1.2}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media (max-width:480px){.two{grid-template-columns:1fr}}
+
+/* ---------- Photo booth ---------- */
+/* booth.webp is 1004x1189 at source; the slot is centred 91.8% down and 43.6% wide.
+   The strip (580x1264 source) is 41.5% of the booth's width so it fits the slot. */
+.booth-wrap{width:min(100%,440px);margin:0 auto;display:grid;justify-items:center;--sw:calc(min(100vw - 32px,440px) * .40)}
+.booth{position:relative;width:100%;aspect-ratio:1004/1189;filter:drop-shadow(0 22px 26px rgb(44 50 30 / .22))}
+.booth > img{display:block;width:100%;height:100%}
+.flash{position:absolute;inset:0;background:#fffbea;opacity:0;pointer-events:none;
+  -webkit-mask:url("booth.webp") 0 0/100% 100%;mask:url("booth.webp") 0 0/100% 100%}
+.strip-clip{overflow:hidden;margin-top:-9.7%;padding:0 50px 30px;position:relative;z-index:1}
+.hang{transform-origin:50% 0}
+.strip{position:relative;width:var(--sw);aspect-ratio:580/1264;box-shadow:0 12px 20px rgb(74 60 34 / .22)}
+.strip > img{display:block;width:100%;height:100%}
+.shot{position:absolute;left:13.8%;width:71.7%;height:24.5%;overflow:hidden;background:#d8cfbd}
+.shot:nth-of-type(1){top:6.65%}
+.shot:nth-of-type(2){top:32.67%}
+.shot:nth-of-type(3){top:58.7%}
+.shot .img{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--label);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgb(255 255 255 / .9)}
+.shot .img img{width:100%;height:100%;object-fit:cover}
+.reprint{margin-top:4px;font:400 11px/1 var(--label);letter-spacing:.3em;text-transform:uppercase;color:var(--ink);
+  background:none;border:0;border-bottom:1px solid var(--gold);padding:8px 2px;cursor:pointer}
+.reprint:hover{color:var(--gold)}
+.reprint:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+
+.armed .strip{transform:translateY(-102%)}
+.armed .shot .img{filter:sepia(.7) brightness(1.75) contrast(.35) saturate(.4)}
+.printing .flash{animation:flash 1.2s linear}
+.printing .strip{animation:printSmooth 2.6s ease-in-out 1.2s both}
+.printing .hang{animation:swing 1.8s ease-out 3.8s}
+.printing .shot .img{transition:filter 2.2s ease-out}
+.printing .shot:nth-of-type(3) .img{transition-delay:3.2s}
+.printing .shot:nth-of-type(2) .img{transition-delay:3.7s}
+.printing .shot:nth-of-type(1) .img{transition-delay:4.2s}
+@keyframes flash{0%,18%,36%,54%,72%,100%{opacity:0}6%,42%,78%{opacity:.85}}
+@keyframes printSmooth{
+  0%{transform:translateY(-102%)} 16%{transform:translateY(-76%)} 24%{transform:translateY(-76%)}
+  42%{transform:translateY(-50%)} 50%{transform:translateY(-50%)} 68%{transform:translateY(-24%)}
+  76%{transform:translateY(-24%)} 94%{transform:translateY(2%)} 100%{transform:translateY(0)}}
+@keyframes swing{0%{transform:rotate(0)}20%{transform:rotate(3deg)}45%{transform:rotate(-2deg)}70%{transform:rotate(1deg)}100%{transform:rotate(0)}}
+
+/* Scripture */
+.verse{display:grid;justify-items:center;gap:22px;text-align:center;padding-block:8px}
+.verse-garland{display:block;width:min(100%,440px);height:auto}
+.verse blockquote{margin:0 auto;max-width:min(100%,26ch);display:grid;gap:18px;justify-items:center;text-align:center}
+.verse p{margin:0;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(28px,7.6vw,42px);line-height:1.25;color:var(--ink);text-align:center;text-wrap:balance}
+.verse cite{font-style:normal;font-family:var(--label);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+
+/* Closing photo */
+.closing{margin:0;display:grid;justify-items:center;gap:14px;background:var(--paper) var(--grain);padding:14px 14px 18px;
+  box-shadow:inset 0 0 0 1px var(--gold-soft),0 18px 34px rgb(74 60 34 / .12)}
+.closing-photo{position:relative;width:100%;aspect-ratio:4/5;max-width:100%;overflow:hidden;border-radius:999px 999px 2px 2px;box-shadow:inset 0 0 0 1px var(--gold)}
+.closing-photo .img{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--label);color:rgb(255 255 255 / .9);font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+.closing-photo .img img{width:100%;height:100%;object-fit:cover}
+.closing figcaption{font-family:var(--script);font-size:30px;line-height:1.2;color:var(--ink)}
+
+/* Countdown card */
+.sheet{background:var(--paper) var(--grain);text-align:center;display:grid;gap:30px;
+  padding-block:clamp(44px,9vw,64px);padding-inline:clamp(24px,7vw,56px);
+  box-shadow:inset 0 0 0 12px var(--paper),inset 0 0 0 13px var(--gold),inset 0 0 0 17px var(--paper),inset 0 0 0 17.6px var(--gold-soft),0 24px 48px rgb(74 60 34 / .12)}
+.sheet .script{font-size:clamp(34px,9vw,48px)}
+.count{display:grid;grid-template-columns:repeat(4,1fr);max-width:420px;margin:0 auto;width:100%}
+.unit{display:grid;gap:6px;padding-block:6px}
+.unit + .unit{border-left:1px solid var(--gold-soft)}
+.unit strong{font-family:var(--display);font-weight:500;font-size:clamp(30px,8.5vw,46px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums lining-nums}
+.unit span{font-family:var(--label);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-block;justify-self:center;font:400 11px/1 var(--label);letter-spacing:.3em;text-transform:uppercase;
+  color:#f3e4bb;background:var(--ink);padding:17px 28px;text-decoration:none;border-radius:1px;
+  box-shadow:inset 0 0 0 3px var(--ink),inset 0 0 0 4px var(--gold);transition:background .25s}
+.btn:hover{background:#3c5a40;box-shadow:inset 0 0 0 3px #3c5a40,inset 0 0 0 4px var(--gold)}
+.btn:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+.foot{font-style:italic;font-size:19px;color:var(--muted);margin:0}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important}
+  html{scroll-behavior:auto}
+  .win{--p:1!important}
+  }
+</style>
+
+</head>
+<body>
+<section class="stage" id="stage">
+  <div class="stage-inner">
+    <button class="envelope" id="envelope" aria-label="Break the seal and open the envelope">
+      <span class="env-back"></span>
+      <span class="card"><img src="invite-v2.jpg" alt=""></span>
+      <span class="env-front"></span>
+      <span class="flap"><span class="flap-face"></span><span class="flap-inside"></span></span>
+      <span class="seal"><img src="seal.webp" width="520" height="523" alt=""></span>
+    </button>
+    <p class="request">Requests the pleasure of your company</p>
+    <p class="hint">Tap the seal to open</p>
+  </div>
+</section>
+
+<main id="invite">
+  <article class="invite" aria-label="Save the date">
+    <h1 class="sr-only">Save the date for the wedding of Gabrielle Younes and Ryan Boustany, 17 July 2027</h1>
+    <img src="invite-v2.jpg" width="1200" height="1880" alt="Save the date for the wedding of Gabrielle Younes and Ryan Boustany, 17.07.2027, with a watercolour of the church, framed by embroidered hydrangeas, calla lilies, lily of the valley and ivy">
+  </article>
+
+  <svg class="flourish" viewBox="0 0 180 28" aria-hidden="true"><g fill="none" stroke="#b8975a" stroke-width="1"><path d="M10,14 H70 M110,14 H170"/><path d="M70,14 C76,4 86,4 86,12 C86,17 80,17 80,13"/><path d="M110,14 C104,4 94,4 94,12 C94,17 100,17 100,13"/><path d="M70,14 C76,24 86,24 86,16 M110,14 C104,24 94,24 94,16"/></g><path d="M90,8 L94,14 L90,20 L86,14Z" fill="#b8975a"/></svg>
+
+  <section class="booth-wrap" id="boothWrap" aria-label="Photo booth">
+    <div class="booth" id="booth">
+      <img src="booth.webp" width="880" height="1042" alt="Photo booth: Our moments in time">
+      <span class="flash" aria-hidden="true"></span>
+    </div>
+    <div class="strip-clip">
+      <div class="hang">
+        <div class="strip">
+          <img src="strip.jpg" width="440" height="959" alt="">
+          <div class="shot"><div class="img ph1">Photo 1</div></div>
+          <div class="shot"><div class="img ph2">Photo 2</div></div>
+          <div class="shot"><div class="img ph3">Photo 3</div></div>
+        </div>
+      </div>
+    </div>
+    <button class="reprint" id="reprint" type="button">Print again</button>
+  </section>
+
+  <article class="sheet">
+    <p class="script">Until we say I do</p>
+    <div class="count">
+      <div class="unit"><strong id="d">000</strong><span>Days</span></div>
+      <div class="unit"><strong id="h">00</strong><span>Hours</span></div>
+      <div class="unit"><strong id="m">00</strong><span>Mins</span></div>
+      <div class="unit"><strong id="s">00</strong><span>Secs</span></div>
+    </div>
+    <a class="btn" id="cal" href="#" target="_blank" rel="noopener">Add to calendar</a>
+    <p class="foot">Formal invitation to follow</p>
+  </article>
+
+  <section class="verse" aria-label="Scripture">
+    <img class="verse-garland" src="garland-top.webp" width="1000" height="351" alt="">
+    <blockquote>
+      <p>&ldquo;And above all these put on love, which binds everything together in perfect harmony.&rdquo;</p>
+      <cite>Colossians 3:14</cite>
+    </blockquote>
+    <img class="verse-garland" src="garland-bottom.webp" width="1000" height="284" alt="">
+  </section>
+
+  <figure class="closing">
+    <div class="closing-photo"><div class="img ph1">Your photo here</div></div>
+    <figcaption>Gabrielle &amp; Ryan</figcaption>
+  </figure>
+</main>
+
+<script>
+/* ---- Edit these ---- */
+const CONFIG = {
+  name1: "Ryan",
+  name2: "Gabrielle",
+  initials: "R&G",
+  date: "2027-07-17T15:00:00+10:00",   // ceremony start, Sydney time (AEST in July)
+  place: "Sydney, Australia"
+};
+
+const $ = id => document.getElementById(id);
+const when = new Date(CONFIG.date);
+const fmt = o => when.toLocaleDateString("en-AU",{timeZone:"Australia/Sydney",...o});
+const cardDate = fmt({day:"2-digit",month:"2-digit",year:"numeric"}).replace(/\//g," · ");
+
+/* ---------- Embroidered flower helpers ---------- */
+(function(){
+  const IVY = "M0,0 C-5,-4 -15,-4 -17,-12 C-12,-13 -9,-17 -8,-22 C-4,-20 -2,-25 0,-31 C2,-25 4,-20 8,-22 C9,-17 12,-13 17,-12 C15,-4 5,-4 0,0Z";
+  const ivy = (x,y,r,s=1) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="${IVY}" fill="url(#gLeaf)" stroke="#b8975a" stroke-width=".7"/><path d="M0,-1 L0,-27 M0,-11 L-10,-13 M0,-11 L10,-13 M0,-19 L-6,-22 M0,-19 L6,-22" fill="none" stroke="#b9cba6" stroke-width=".8"/></g>`;
+  const rose = (x,y,s=1) => `<g transform="translate(${x} ${y}) scale(${s})">
+    <circle r="21" fill="url(#rose)" stroke="#c9b48a" stroke-width=".8"/>
+    <circle r="17" fill="none" stroke="#e2d4b5" stroke-width=".8" stroke-dasharray="1.6 2"/>
+    <path d="M-18,6 C-13,-15 13,-15 18,6 M-16,10 C-6,19 6,19 16,10" fill="none" stroke="#d1bf96" stroke-width=".9"/>
+    <circle r="11.5" fill="#fdfaf3" stroke="#d3c19b" stroke-width=".8"/>
+    <path d="M-9,3 C-7,-9 7,-9 9,3" fill="none" stroke="#d3c19b" stroke-width=".8"/>
+    <circle r="5" fill="#f1e6cf" stroke="#c9b48a" stroke-width=".7"/>
+    <path d="M-2,0 C-1,-3 3,-2 2,1" fill="none" stroke="#b9a274" stroke-width=".7"/></g>`;
+  const hydrangea = (x,y,s=1) => {
+    let g = `<g transform="translate(${x} ${y}) scale(${s})">`;
+    for (let i=0;i<22;i++){
+      const a = i*2.39996, r = 4.2*Math.sqrt(i);
+      const fx = (Math.cos(a)*r).toFixed(1), fy = (Math.sin(a)*r*.9).toFixed(1);
+      g += `<g transform="translate(${fx} ${fy})"><circle cx="-2" r="2.5" fill="#ebbfb8"/><circle cx="2" r="2.5" fill="#ebbfb8"/><circle cy="-2" r="2.5" fill="#f2cdc7"/><circle cy="2" r="2.5" fill="#dfaaa3"/><circle r=".9" fill="#b97f79"/></g>`;
+    }
+    return g + `</g>`;
+  };
+  const bells = (x,y,r,s=1) => {
+    let g = `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M0,0 C10,-7 22,-6 32,4" fill="none" stroke="#5f7b52" stroke-width="1.2"/>`;
+    [[8,-3.6],[15,-5],[22,-3.4],[28,0]].forEach(([bx,by],i)=>{
+      g += `<path d="M${bx},${by} L${bx},${by+4}" stroke="#5f7b52" stroke-width=".8"/><path d="M${bx-3.2},${by+9} C${bx-3.4},${by+4} ${bx+3.4},${by+4} ${bx+3.2},${by+9} l-1,-1 l-1.1,1 l-1.1,-1 l-1.1,1 l-1.1,-1Z" fill="#fffdf6" stroke="#c9b48a" stroke-width=".6"/>`;
+    });
+    return g + `</g>`;
+  };
+  const pearl = (x,y,r=2.6) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#pearl)"/>`;
+  const stem = d => `<path d="${d}" fill="none" stroke="#4e6a46" stroke-width="2.4" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#c9ad6e" stroke-width=".6" stroke-dasharray="2 3"/>`;
+
+  const calla = (x,y,r,s=1) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})">
+    <path d="M0,4 L0,-8" stroke="#4e6a46" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M0,-2 C-12,-8 -17,-22 -15,-31 C-6,-23 -2,-12 0,-2Z" fill="url(#gLeaf)" stroke="#b8975a" stroke-width=".5"/>
+    <path d="M0,-6 C-9,-10 -12,-26 -5,-38 C-1,-44 8,-46 14,-41 C8,-36 7,-26 8,-16 C7,-10 4,-7 0,-6Z" fill="url(#gCalla)" stroke="#d2c6aa" stroke-width=".7"/>
+    <path d="M-3,-12 C-6,-22 -3,-32 4,-38" fill="none" stroke="#e9e1cf" stroke-width=".7" stroke-dasharray="1.4 1.6"/>
+    <path d="M14,-41 C6,-38 2,-30 2,-20" fill="none" stroke="#ddd2ba" stroke-width=".8"/>
+    <path d="M1.5,-11 L4,-29" stroke="#e2c25a" stroke-width="3" stroke-linecap="round"/></g>`;
+
+  document.body.insertAdjacentHTML("beforeend", `<svg class="defs" aria-hidden="true"><defs>
+      <linearGradient id="gLeaf" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#2f4a31"/><stop offset="1" stop-color="#86a374"/></linearGradient>
+      <linearGradient id="gCalla" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffef9"/><stop offset="1" stop-color="#e6dcc6"/></linearGradient>
+      <radialGradient id="pearl" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#ede5d6"/><stop offset="1" stop-color="#c8bba2"/></radialGradient>
+      <radialGradient id="rose" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fffef9"/><stop offset="1" stop-color="#ece0c6"/></radialGradient>
+    </defs></svg>`);
+
+})();
+
+/* ---------- Envelope ---------- */
+const stage = $("stage");
+$("envelope").addEventListener("click", () => {
+  if (stage.classList.contains("opened")) return;
+  stage.classList.add("opened");
+  setTimeout(() => $("invite").scrollIntoView({behavior:"smooth"}), 2600);
+});
+
+/* ---------- Scroll-driven photo reveal ---------- */
+const wins = [...document.querySelectorAll(".win")];
+function reveal(){
+  const vh = innerHeight;
+  for (const el of wins){
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--p", Math.min(1, Math.max(0, (vh - r.top) / (vh * .75))).toFixed(3));
+  }
+}
+addEventListener("scroll", () => requestAnimationFrame(reveal), {passive:true});
+addEventListener("resize", reveal);
+reveal();
+
+/* ---------- Photo booth ---------- */
+const boothWrap = $("boothWrap");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function armBooth(){ boothWrap.classList.remove("printing"); boothWrap.classList.add("armed"); }
+function printBooth(){
+  void boothWrap.offsetWidth;
+  requestAnimationFrame(() => { boothWrap.classList.remove("armed"); boothWrap.classList.add("printing"); });
+}
+// The strip rests fully printed; it only retracts into the booth if the booth starts off-screen.
+if (!reduceMotion && $("booth").getBoundingClientRect().top > innerHeight * .6){
+  armBooth();
+  const io = new IntersectionObserver(es => {
+    if (es[0].isIntersecting){ io.disconnect(); printBooth(); }
+  }, {threshold:.55});
+  io.observe($("booth"));
+}
+$("reprint").addEventListener("click", () => {
+  if (reduceMotion) return;
+  armBooth(); printBooth();
+});
+
+/* ---------- Countdown ---------- */
+const pad = n => String(n).padStart(2,"0");
+function tick(){
+  let t = Math.max(0, when - Date.now()) / 1000;
+  const d = Math.floor(t/86400); t -= d*86400;
+  const h = Math.floor(t/3600);  t -= h*3600;
+  const m = Math.floor(t/60);
+  $("d").textContent = d; $("h").textContent = pad(h);
+  $("m").textContent = pad(m); $("s").textContent = pad(Math.floor(t - m*60));
+}
+tick(); setInterval(tick, 1000);
+
+/* ---------- Google Calendar link (all-day) ---------- */
+const ymd = dt => dt.toLocaleDateString("en-CA",{timeZone:"Australia/Sydney"}).replace(/-/g,"");
+$("cal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+  "&text=" + encodeURIComponent(`${CONFIG.name1} & ${CONFIG.name2}'s Wedding`) +
+  "&dates=" + ymd(when) + "/" + ymd(new Date(when.getTime()+86400000)) +
+  "&details=" + encodeURIComponent("Formal invitation to follow.") +
+  "&location=" + encodeURIComponent(CONFIG.place);
+</script>
+
+</body>
+</html>
