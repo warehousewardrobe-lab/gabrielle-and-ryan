@@ -196,7 +196,7 @@ figcaption{font-family:var(--script);font-size:24px;text-align:center;color:#5b5
       <span class="flap"><span class="flap-face"></span><span class="flap-inside"></span></span>
       <span class="seal"><img src="seal.webp" width="520" height="523" alt=""></span>
     </button>
-    <p class="request">Requests the pleasure of your company</p>
+    <p class="request">We request the pleasure of your company</p>
     <p class="hint">Tap the seal to open</p>
   </div>
 </section>
@@ -339,25 +339,52 @@ addEventListener("resize", reveal);
 reveal();
 
 /* ---------- Photo booth ---------- */
-const boothWrap = $("boothWrap");
-const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-function armBooth(){ boothWrap.classList.remove("printing"); boothWrap.classList.add("armed"); }
-function printBooth(){
-  void boothWrap.offsetWidth;
-  requestAnimationFrame(() => { boothWrap.classList.remove("armed"); boothWrap.classList.add("printing"); });
-}
-// The strip rests fully printed; it only retracts into the booth if the booth starts off-screen.
-if (!reduceMotion && $("booth").getBoundingClientRect().top > innerHeight * .6){
-  armBooth();
-  const io = new IntersectionObserver(es => {
-    if (es[0].isIntersecting){ io.disconnect(); printBooth(); }
-  }, {threshold:.55});
-  io.observe($("booth"));
-}
-$("reprint").addEventListener("click", () => {
-  if (reduceMotion) return;
-  armBooth(); printBooth();
-});
+/* ---------- Photo bank: each print shows a fresh set of three ---------- */
+(function(){
+  const FOLDER = "photobank";
+  // Backup list, only used if GitHub can't list the folder (e.g. on a custom domain).
+  // File names inside the folder, e.g. ["beach.jpg", "engagement-2.jpg"]
+  const BACKUP = ["photo1.jpg", "photo6.jpg", "photo2.jpg"];
+
+  const holders = [...document.querySelectorAll(".shot .img")];
+  let bank = [];
+  let current = holders.map(h => h.querySelector("img")).filter(Boolean).map(i => i.getAttribute("src"));
+
+  async function listFolder(){
+    try {
+      const m = location.hostname.match(/^([^.]+)\.github\.io$/i);
+      if (!m) return [];
+      const first = location.pathname.split("/").filter(Boolean)[0];
+      const repo = first && !first.includes(".") ? first : `${m[1]}.github.io`;
+      const r = await fetch(`https://api.github.com/repos/${m[1]}/${repo}/contents/${FOLDER}`);
+      if (!r.ok) return [];
+      return (await r.json())
+        .filter(f => f.type === "file" && /\.(jpe?g|png|webp|avif|gif)$/i.test(f.name))
+        .map(f => encodeURI(f.path));
+    } catch (e) { return []; }
+  }
+
+  function pick(){
+    const fresh = bank.filter(s => !current.includes(s));
+    const pool = fresh.length >= holders.length ? fresh : bank.filter(s => s !== current[0]);
+    for (let i = pool.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+    return pool.slice(0, holders.length);
+  }
+  function show(set){
+    holders.forEach((h, i) => { h.className = "img"; h.innerHTML = `<img src="${set[i]}" alt="">`; });
+    current = set;
+  }
+
+  listFolder().then(found => {
+    bank = found.length ? found : BACKUP.map(n => `${FOLDER}/${encodeURIComponent(n)}`);
+    if (bank.length < holders.length) return;
+    bank.forEach(src => { const i = new Image(); i.src = src; });
+    if (current.length < holders.length) show(pick());
+  });
+  document.addEventListener("click", e => {
+    if (e.target.closest("#reprint") && bank.length >= holders.length) show(pick());
+  }, true);
+})();
 
 /* ---------- Countdown ---------- */
 const pad = n => String(n).padStart(2,"0");
